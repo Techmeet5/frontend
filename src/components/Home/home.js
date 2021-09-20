@@ -68,7 +68,7 @@ export default function Main() {
               Welcome to React
             </Typography> 
           </ThemeProvider> 
-
+          
           <Container maxWidth="sm" className={classes.text}>
             <ThemeProvider theme={theme_1}>
               <Typography  align="left" gutterBottom>

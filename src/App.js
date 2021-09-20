@@ -1,17 +1,53 @@
 import './App.css';
-import TopBar from './components/Bar'
-import BottomBar from './components/BottomBar'
+import React,{useState} from 'react'
+// Home Page Components
+import TopBar from './components/Home/TopBar'
+import Main      from './components/Home/home';
+import BottomBar from './components/Home/BottomBar'
 
-import Main from './components/home';
+// Login Page Components
+import LoginTopBar from './components/Login/TopBar'
+import LoginMain   from './components/Login/Main'
+
+// SignUp Page Components
+import SignUpTopBar from './components/SignUp/TopBar'
+import SignUpMain   from './components/SignUp/Main'
 
 function App() {
-  return (
-    <>
-      <TopBar />
-      <Main />
-      <BottomBar />
-    </>
+
+  const [page,       set_page]       = useState(null)
+  
+
+  function handle_page(newValue) {
+      set_page(newValue);
+  }
+
+  if(page===1 || page===null){
+    return (
+      <>
+        <TopBar value={page} onChange={handle_page} />
+        <Main />
+        <BottomBar />
+      </>
   );
+  }
+  else if(page===2){
+    return(
+      <>
+        <LoginTopBar  value={page} onChange={handle_page} />
+        <LoginMain />
+      </>
+  );
+  }
+  else if(page===3){
+    return(
+      <>
+        <SignUpTopBar  value={page} onChange={handle_page} />
+        <SignUpMain />
+      </>
+    );
+  }
+  
 }
 
 export default App;
