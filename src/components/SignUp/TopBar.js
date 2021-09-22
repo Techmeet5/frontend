@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
 
+import SignUpMain   from './Main'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -86,7 +87,8 @@ export default function SignUpTopBar(props) {
           </Button>
         </Toolbar>
       </AppBar>
-      
+      <SignUpMain {...props} />
+
     </div>
   );
 }

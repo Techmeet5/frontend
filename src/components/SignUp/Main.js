@@ -39,7 +39,7 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpMain() {
+export default function SignUpMain(props) {
   const classes = styles()
   
   const [values, setValues] = React.useState({
@@ -61,6 +61,14 @@ export default function SignUpMain() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  function showLogin(event) {
+    props.onChange(2);  
+  }
+
+  function Login(event) {
+    props.onChange(2);  
+  }
 
   return (
     <div className={classes.root} style={{ backgroundImage: `url(${background})`,
@@ -129,13 +137,17 @@ export default function SignUpMain() {
 
          
 
-          <Button variant="contained" className={classes.button}>REGISTER</Button>
+          <Button variant="contained" 
+                  className={classes.button}
+                  onClick={Login}
+                  >REGISTER</Button>
 
           <Typography variant="caption"  gutterBottom className={classes.caption}>
             Already have an Account? 
             <Button style={{  color: '#26BEFF',
                               textTransform: 'none',
                               display: "inline" }}
+                    onClick={showLogin}
                             >
               <Typography variant="caption" gutterBottom style={{ fontWeight: '600' }}>
                 Log In

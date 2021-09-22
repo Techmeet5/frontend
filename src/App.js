@@ -7,11 +7,9 @@ import BottomBar from './components/Home/BottomBar'
 
 // Login Page Components
 import LoginTopBar from './components/Login/TopBar'
-import LoginMain   from './components/Login/Main'
 
 // SignUp Page Components
 import SignUpTopBar from './components/SignUp/TopBar'
-import SignUpMain   from './components/SignUp/Main'
 
 function App() {
 
@@ -35,7 +33,6 @@ function App() {
     return(
       <>
         <LoginTopBar  value={page} onChange={handle_page} />
-        <LoginMain />
       </>
   );
   }
@@ -43,7 +40,6 @@ function App() {
     return(
       <>
         <SignUpTopBar  value={page} onChange={handle_page} />
-        <SignUpMain />
       </>
     );
   }

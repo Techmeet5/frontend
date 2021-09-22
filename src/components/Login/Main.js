@@ -45,7 +45,7 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginMain() {
+export default function LoginMain(props ) {
   const classes = styles()
   
   const [values, setValues] = React.useState({
@@ -67,6 +67,11 @@ export default function LoginMain() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  function showSignUp(event) {
+    console.log(props)
+    props.onChange(3);  
+}
 
   return (
     <div className={classes.root} style={{ backgroundImage: `url(${background})`,
@@ -123,6 +128,7 @@ export default function LoginMain() {
             <Button style={{  color: '#26BEFF',
                               textTransform: 'none',
                               display: "inline" }}
+                    onClick={showSignUp}
                             >
               <Typography variant="caption" gutterBottom style={{ fontWeight: '600' }}>
                 Create Account

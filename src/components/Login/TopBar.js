@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
 
+import LoginMain   from './Main'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginTopBar(props) {
   const classes = useStyles();
+
 
   function showHome(event) {
       props.onChange(1);  
@@ -86,7 +88,8 @@ export default function LoginTopBar(props) {
           </Button>
         </Toolbar>
       </AppBar>
-      
+      <LoginMain {...props} />
+
     </div>
   );
 }
