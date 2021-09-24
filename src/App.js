@@ -10,6 +10,9 @@ import LoginTopBar from './components/Login/TopBar'
 
 // SignUp Page Components
 import SignUpTopBar from './components/SignUp/TopBar'
+//import { Dashboard } from '@material-ui/icons';
+
+import Dashboard from './components/Dashboard/dashboard.js'
 
 function App() {
 
@@ -40,6 +43,13 @@ function App() {
     return(
       <>
         <SignUpTopBar  value={page} onChange={handle_page} />
+      </>
+    );
+  }
+  else if(page===4){
+    return(
+      <>
+        <Dashboard />
       </>
     );
   }

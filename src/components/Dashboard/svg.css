@@ -1,0 +1,16 @@
+.close{
+    fill: chocolate;
+}
+.close:hover{
+    fill: green;
+    /*transform: rotateX(+20deg);*/
+    transform: scaleX(10deg);
+}
+
+path:hover{
+    fill: brown;
+}
+
+.MuiTextField-root{
+    width: -webkit-fill-available;
+}

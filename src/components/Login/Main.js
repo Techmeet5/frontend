@@ -71,7 +71,13 @@ export default function LoginMain(props ) {
   function showSignUp(event) {
     console.log(props)
     props.onChange(3);  
-}
+  }
+
+  function showDashboard(event){
+    console.log("Hello")
+    props.onChange(4);  
+
+  }
 
   return (
     <div className={classes.root} style={{ backgroundImage: `url(${background})`,
@@ -121,7 +127,12 @@ export default function LoginMain(props ) {
             </Typography>
           </Button>
 
-          <Button variant="contained" className={classes.button}>Sign In</Button>
+          <Button variant="contained" 
+                  className={classes.button}
+                  onClick={showDashboard}
+                  >
+                    Sign In
+          </Button>
 
           <Typography variant="caption"  gutterBottom className={classes.caption}>
             Don't have an Account? 
