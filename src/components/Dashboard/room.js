@@ -2,6 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
-
+ 
 export default function CenteredGrid() {
   const classes = useStyles();
 
@@ -84,17 +86,31 @@ export default function CenteredGrid() {
                   </Grid>
                 </Grid>
 
-                <vr />
                 <Grid item>
                   <Grid container spacing={3}>
                     <Grid item xs={12}>
-                      <Typography variant="h6" style={{textAlign:'left'}}>
-                        CREATE ROOM
-                      </Typography>
+                      <TextField variant="outlined" placeholder="Search..."  />
                     </Grid>
                   </Grid>
                 </Grid>
 
+                <Grid item>
+                  <Grid container spacing={3}>
+                    <Grid item xs={8}></Grid>
+                    <Grid item xs={2}>
+                      <Button variant="contained">
+                        Schedule
+                      </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Button variant="contained">
+                        Start
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+                
             </Grid>
           </Paper>
         </Grid>
