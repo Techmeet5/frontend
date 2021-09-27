@@ -10,7 +10,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
-
+import { useHistory } from "react-router-dom";
 import background from '../../svg/Login_design_svg.svg'
 
 
@@ -22,12 +22,12 @@ const styles = makeStyles((theme) => ({
     backgroundColor: '#F0F0F0',
 
   },
-  input:{
+  input: {
     marginTop: '30px',
     padding: '10px',
     background: '#F5F5F5'
   },
-  caption_button:{
+  caption_button: {
     marginTop: '20px',
     color: '#26BEFF',
     float: 'right',
@@ -35,19 +35,20 @@ const styles = makeStyles((theme) => ({
     display: "block",
     fontWeight: '600'
   },
-  button:{
+  button: {
     width: "100%",
     fontWeight: '900'
   },
-  caption:{
+  caption: {
     marginTop: '20px',
     display: "block",
   },
 }));
 
-export default function LoginMain(props ) {
+export default function LoginMain(props) {
+  const { push } = useHistory()
   const classes = styles()
-  
+
   const [values, setValues] = React.useState({
     password: '',
     showPassword: false,
@@ -70,88 +71,91 @@ export default function LoginMain(props ) {
 
   function showSignUp(event) {
     console.log(props)
-    props.onChange(3);  
+    props.onChange(3);
   }
 
-  function showDashboard(event){
+  function showDashboard(event) {
     console.log("Hello")
-    props.onChange(4);  
+    props.onChange(4);
 
   }
 
   return (
-    <div className={classes.root} style={{ backgroundImage: `url(${background})`,
-                                            height: '100vh',
-                                        }}>
-      <Grid container  spacing={0} alignItems="stretch"  >
-        
+    <div className={classes.root} style={{
+      backgroundImage: `url(${background})`,
+      height: '100vh',
+    }}>
+      <Grid container spacing={0} alignItems="stretch"  >
+
         <Grid item xs={7}>
-          
+
         </Grid>
 
         <Grid item xs={4} >
-          <Paper elevation={0} style={{  height: '100%', padding: '30px', paddingBottom:'0px' }}
-                 square
-          > 
+          <Paper elevation={0} style={{ height: '100%', padding: '30px', paddingBottom: '0px' }}
+            square
+          >
 
-          <Typography variant="h6" gutterBottom style={{ fontWeight: 600, textAlign: 'center' }}>
-            Log Into Your Account
-          </Typography>
-          <TextField fullWidth placeholder="Username" className={classes.input} />
-          
-          
-          <Input
-            type     ={values.showPassword ? 'text' : 'password'}
-            value    ={values.password}
-            onChange ={handleChange('password')}
-            fullWidth 
-            placeholder="Password"
-            className={classes.input}
-            variant="filled"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick     ={handleClickShowPassword}
-                  onMouseDown ={handleMouseDownPassword}
-                >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-
-          <Button className={classes.caption_button}>
-            <Typography variant="caption"  gutterBottom className={classes.caption_button}>
-              Forgot Password?
+            <Typography variant="h6" gutterBottom style={{ fontWeight: 600, textAlign: 'center' }}>
+              Log Into Your Account
             </Typography>
-          </Button>
+            <TextField fullWidth placeholder="Username" className={classes.input} />
 
-          <Button variant="contained" 
-                  className={classes.button}
-                  onClick={showDashboard}
+
+            <Input
+              type={values.showPassword ? 'text' : 'password'}
+              value={values.password}
+              onChange={handleChange('password')}
+              fullWidth
+              placeholder="Password"
+              className={classes.input}
+              variant="filled"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
                   >
-                    Sign In
-          </Button>
+                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
 
-          <Typography variant="caption"  gutterBottom className={classes.caption}>
-            Don't have an Account? 
-            <Button style={{  color: '#26BEFF',
-                              textTransform: 'none',
-                              display: "inline" }}
-                    onClick={showSignUp}
-                            >
-              <Typography variant="caption" gutterBottom style={{ fontWeight: '600' }}>
-                Create Account
+            <Button className={classes.caption_button}>
+              <Typography variant="caption" gutterBottom className={classes.caption_button}>
+                Forgot Password?
               </Typography>
             </Button>
-          </Typography>
 
-         
+            <Button variant="contained"
+              className={classes.button}
+              onClick={() => push('/homepage')}
+            >
+              Sign In
+            </Button>
 
-          </Paper> 
+            <Typography variant="caption" gutterBottom className={classes.caption}>
+              Don't have an Account?
+              <Button style={{
+                color: '#26BEFF',
+                textTransform: 'none',
+                display: "inline"
+              }}
+                onClick={showSignUp}
+              >
+                <Typography variant="caption" gutterBottom style={{ fontWeight: '600' }}>
+                  Create Account
+                </Typography>
+              </Button>
+            </Typography>
+
+
+
+          </Paper>
         </Grid>
-        
+
       </Grid>
     </div>
   );

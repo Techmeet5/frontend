@@ -6,14 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor:"#151348"
   },
-  
   title: {
     flexGrow: 1,
   },
@@ -25,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '30px',
   }
 }));
-
-
 
 export default function TopBar(props) {
   const classes = useStyles();

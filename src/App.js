@@ -1,59 +1,20 @@
 import './App.css';
-import React,{useState} from 'react'
-// Home Page Components
-import TopBar from './components/Home/TopBar'
-import Main      from './components/Home/home';
-import BottomBar from './components/Home/BottomBar'
+import React from 'react'
+import MainPage from './mainpage';
+import Dashboard from './components/Dashboard/dashboard';
+import { Route, BrowserRouter as Router } from "react-router-dom";
 
-// Login Page Components
-import LoginTopBar from './components/Login/TopBar'
-
-// SignUp Page Components
-import SignUpTopBar from './components/SignUp/TopBar'
-//import { Dashboard } from '@material-ui/icons';
-
-import Dashboard from './components/Dashboard/dashboard.js'
 
 function App() {
+  return (
+    <div>
+      <Router>
+        <Route exact path='/' component={MainPage}/>
+        <Route path='/homepage' component={Dashboard}/>
+      </Router>
+    </div>
+  )
 
-  const [page,       set_page]       = useState(null)
-  
-
-  function handle_page(newValue) {
-      set_page(newValue);
-  }
-
-  if(page===1 || page===null){
-    return (
-      <>
-        <TopBar value={page} onChange={handle_page} />
-        <Main />
-        <BottomBar />
-      </>
-  );
-  }
-  else if(page===2){
-    return(
-      <>
-        <LoginTopBar  value={page} onChange={handle_page} />
-      </>
-  );
-  }
-  else if(page===3){
-    return(
-      <>
-        <SignUpTopBar  value={page} onChange={handle_page} />
-      </>
-    );
-  }
-  else if(page===4){
-    return(
-      <>
-        <Dashboard />
-      </>
-    );
-  }
-  
 }
 
 export default App;
