@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -12,7 +12,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
 import { useHistory } from "react-router-dom";
 import background from '../../svg/Login_design_svg.svg'
-
+import axios from 'axios';
 
 
 const styles = makeStyles((theme) => ({
@@ -49,11 +49,14 @@ export default function LoginMain(props) {
   const { push } = useHistory()
   const classes = styles()
 
-  const [values, setValues] = React.useState({
+  const [username, setUsername] = useState('')
+  const [values, setValues] = useState({
     password: '',
     showPassword: false,
   });
 
+
+  // Password Methods
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -69,15 +72,43 @@ export default function LoginMain(props) {
     event.preventDefault();
   };
 
+
+
+  // Other Page Components
   function showSignUp(event) {
     console.log(props)
     props.onChange(3);
   }
 
-  function showDashboard(event) {
-    console.log("Hello")
-    props.onChange(4);
 
+  // Dashboard component
+  function dashboard(){
+    axios.post('http://localhost:8000/api/login/',{
+      "username":username,
+      "password":values.password
+    })
+
+    .then((response) => {
+      console.log(response.data)
+      if(response.data.login==="false"){
+        console.log("Authentication Failed")
+      }
+      else if(response.data.login==="true"){
+       
+        push( { 
+          pathname: "/homepage", 
+          state: {
+            user: username
+          }
+        })
+        
+      }
+    })
+
+    .catch((error) => {
+      console.log("IOT",error)
+    })
+  
   }
 
   return (
@@ -99,7 +130,7 @@ export default function LoginMain(props) {
             <Typography variant="h6" gutterBottom style={{ fontWeight: 600, textAlign: 'center' }}>
               Log Into Your Account
             </Typography>
-            <TextField fullWidth placeholder="Username" className={classes.input} />
+            <TextField fullWidth placeholder="Username" className={classes.input}  onChange={(e) => setUsername(e.target.value) }/>
 
 
             <Input
@@ -131,8 +162,8 @@ export default function LoginMain(props) {
 
             <Button variant="contained"
               className={classes.button}
-              onClick={() => push('/homepage')}
-            >
+              onClick={dashboard}
+              >
               Sign In
             </Button>
 
