@@ -145,10 +145,10 @@ export default function CenteredGrid(props) {
               <Grid item xs={12} >
 
                 <Grid container spacing={1}>
-                  <Grid item xs={4}>
+                  {/* <Grid item xs={4}>
                     <TextField label="Username" value={details.username} onChange={ (e) => setDetails( {...details,username:e.target.value}) }  variant="outlined" />
-                  </Grid>
-                  <Grid item xs={8}>
+                  </Grid> */}
+                  <Grid item xs={12}>
                     <TextField  label="Email"  value={details.email} onChange={ (e) => setDetails( {...details,email:e.target.value}) } variant="outlined" fullWidth />
                   </Grid>
                 </Grid>
