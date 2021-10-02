@@ -1,12 +1,11 @@
 import SideBar from './SideBar';
 import React, { useEffect } from 'react';
 
-function Room(){
+function Room(props){
     function startConference() {
         const domain = 'meet.jit.si';
         const options = {
           roomName: 'roomName',
-          height: 800,
           parentNode: document.getElementById('jitsi-container'),
           configOverwrite: {
             disableInviteFunctions: true,
@@ -41,11 +40,12 @@ function Room(){
         };
     
         const api = new window.JitsiMeetExternalAPI(domain, options);
-        api.resizeLargeVideo("1000px", "400px");
+        api.resizeLargeVideo("800px", "400px");
         api.executeCommand('toggleTileView');
         api.executeCommand('setTileView' ,  true);
       }
       useEffect(() => {
+        // verify the JitsiMeetExternalAPI constructor is added to the global..
         startConference();
       });
         return (

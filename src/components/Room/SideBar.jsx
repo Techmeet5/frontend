@@ -11,9 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import VidConf from './VidConf';
-import WhiteBoard from './WhiteBoard';
-
-
+import WhiteBoard from './WhiteBoard';      
 
 const drawerWidth = 240;
 
@@ -73,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 }));
  
 export default function SideBar() {
+  
   const classes = useStyles();
 
   const [VideoConference    , set_VideoConference] = React.useState(true)
@@ -147,7 +146,7 @@ export default function SideBar() {
         <div className={classes.toolbar} />
 
         <div>
-            {VideoConference     ? <VidConf / >  : ''}
+            <VidConf data={VideoConference} />
             {/* {room         ? <Room />       : ''} */}
             {/* {profile      ? <Profile />    : ''} */}
             {Whiteboard  ? <WhiteBoard/> : ''}

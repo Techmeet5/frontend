@@ -1,9 +1,20 @@
 import React from 'react';
 
-function VidConf() {
+function VidConf(props) {
+  const containerStyle = {
+    width: '1500px',
+    height: '800px',
+  };
+  if(props.data===false){
+    containerStyle.height=0;
+    containerStyle.width=0;
+  }else{
+    containerStyle.height='800px';
+    containerStyle.width='1500px';
+  }
   return (
     <div>
-      <div id="jitsi-container" />
+      <div style={containerStyle} id="jitsi-container" />
     </div>
   );
 }
