@@ -9,7 +9,7 @@ function VidConf(props) {
     containerStyle.height=0;
     containerStyle.width=0;
   }else{
-    containerStyle.height='';
+    containerStyle.height='800px';
     containerStyle.width='1500px';
   }
   return (

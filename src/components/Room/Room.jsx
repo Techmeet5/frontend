@@ -1,11 +1,11 @@
 import SideBar from './SideBar';
 import React, { useEffect } from 'react';
 
-function Room(props){
+function Room(){
     function startConference() {
-        const domain = 'meet.jit.si';
+        const domain = "webcall.paulla.asso.fr";
         const options = {
-          roomName: 'roomName',
+          roomName: 'techmate_sra',
           parentNode: document.getElementById('jitsi-container'),
           configOverwrite: {
             disableInviteFunctions: true,
@@ -36,6 +36,9 @@ function Room(props){
           },
           interfaceConfigOverwrite:{
             HIDE_INVITE_MORE_HEADER: true,
+            SHOW_JITSI_WATERMARK: false,
+            DEFAULT_LOGO_URL: null,
+            DEFAULT_WELCOME_PAGE_LOGO_URL:null,
           }
         };
     
