@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +12,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
 
 import background from '../../svg/Login_design_svg.svg'
+import axios from 'axios';
 
 
 
@@ -42,31 +43,72 @@ const styles = makeStyles((theme) => ({
 export default function SignUpMain(props) {
   const classes = styles()
   
-  const [values, setValues] = React.useState({
-    password: '',
-    showPassword: false,
-  });
 
+  const [username,   setUsername]  = useState(null)
+  const [email,      setEmail]     = useState(null)
+  const [first_name, setFirstname] = useState(null)
+  const [last_name,  setLastname]  = useState(null)
+
+  const [password,      setPassword]   = useState('')
+  const [show_pass,     setShowpass]   = useState(false)
+
+
+  const [conf_password, setConfpassword] = useState('')
+  const [show_cpass,    setShowcpass]    = useState(false)
+
+
+
+
+  // Password Methods
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+    setPassword(event.target.value);
   };
 
   const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
+    setShowpass(!show_pass)
   };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
+
+
+
+  // Confirm Password methods
+  const handleChange2 = (prop) => (event) => {
+    setConfpassword(event.target.value);
+  };
+
+  const handleClickShowPassword2 = () => {
+    setShowcpass(!show_cpass);
+  };
+
+  const handleMouseDownPassword2 = (event) => {
+    event.preventDefault();
+  };
+
+
+
+
+
   function showLogin(event) {
     props.onChange(2);  
   }
 
   function Login(event) {
+    axios.post('http://localhost:8000/api/add/',{
+
+        "username":username,
+        "email":email,       
+        "first_name":first_name,  
+        "last_name":last_name,        
+    })
+
+    .then((response) => {
+      console.log("\n\n",response)
+    })
+
     props.onChange(2);  
   }
 
@@ -89,13 +131,14 @@ export default function SignUpMain(props) {
             Create Account
           </Typography>
 
-          <TextField fullWidth placeholder="First Name" className={classes.input} />
-          <TextField fullWidth placeholder="Last Name"  className={classes.input} />
-          <TextField fullWidth placeholder="Email"      className={classes.input} />
-
+          <TextField fullWidth placeholder="Username  " className={classes.input} onChange={(e) => setUsername(e.target.value) } />
+          <TextField fullWidth placeholder="First Name" className={classes.input} onChange={(e) => setFirstname(e.target.value) } />
+          <TextField fullWidth placeholder="Last Name"  className={classes.input} onChange={(e) => setLastname(e.target.value) } />
+          <TextField fullWidth placeholder="Email"      className={classes.input} onChange={(e) => setEmail(e.target.value) } />
+          
           <Input
-            type     ={values.showPassword ? 'text' : 'password'}
-            value    ={values.password}
+            type     ={show_pass ? 'text' : 'password'}
+            value    ={password}
             onChange ={handleChange('password')}
             fullWidth 
             placeholder="Password"
@@ -108,16 +151,16 @@ export default function SignUpMain(props) {
                   onClick     ={handleClickShowPassword}
                   onMouseDown ={handleMouseDownPassword}
                 >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  {show_pass ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }
           />
 
           <Input
-            type     ={values.showPassword ? 'text' : 'password'}
-            value    ={values.password}
-            onChange ={handleChange('password')}
+            type     ={show_cpass ? 'text' : 'password'}
+            value    ={conf_password}
+            onChange ={handleChange2('password')}
             fullWidth 
             placeholder="Confirm Password"
             className={classes.input}
@@ -126,10 +169,10 @@ export default function SignUpMain(props) {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick     ={handleClickShowPassword}
-                  onMouseDown ={handleMouseDownPassword}
+                  onClick     ={handleClickShowPassword2}
+                  onMouseDown ={handleMouseDownPassword2}
                 >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  {show_cpass ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }

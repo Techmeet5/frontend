@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper          from '@material-ui/core/Paper';
 import Grid           from '@material-ui/core/Grid';
@@ -12,6 +13,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import { Divider, Typography } from '@material-ui/core';
 import './svg.css'
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,9 +48,52 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-export default function CenteredGrid() {
+export default function CenteredGrid(props) {
   const classes = useStyles();
 
+  const [details, setDetails] = useState({
+    username: null,
+    email:    null,
+    first_name: null,
+    last_name: null,
+    college:  null,
+    year:     null,
+    degree:   null,
+    country:  null,
+    about:    null,
+  })
+
+
+  console.log("Inside profile")
+  console.log(details)
+  const url = 'http://localhost:8000/api/profile/'+props.location.state.user
+  
+  
+
+
+
+  useEffect(() => {
+  axios.get(url)
+  .then((response)=>{
+        console.log(response.data)
+          setDetails(
+            {
+              username: response.data.username,
+              email:response.data.email,
+              first_name: response.data.first_name,
+              last_name: response.data.last_name,
+              college:response.data.college,
+              year: response.data.year,
+              degree:response.data.degree,
+              country:response.data.country,
+              about:response.data.about,
+            }
+            )
+            
+  })
+  .catch((error)=>{})
+  },[])
+  
   
   
   return (
@@ -101,10 +146,10 @@ export default function CenteredGrid() {
 
                 <Grid container spacing={1}>
                   <Grid item xs={4}>
-                    <TextField label="Username" placeholder="Username"     defaultValue="sargun123"                 variant="outlined" />
+                    <TextField label="Username" value={details.username} onChange={ (e) => setDetails( {...details,username:e.target.value}) }  variant="outlined" />
                   </Grid>
                   <Grid item xs={8}>
-                    <TextField  label="Email"    placeholder="Email"        defaultValue="sargun.narula5@gmail.com"  variant="outlined" fullWidth />
+                    <TextField  label="Email"  value={details.email} onChange={ (e) => setDetails( {...details,email:e.target.value}) } variant="outlined" fullWidth />
                   </Grid>
                 </Grid>
 
@@ -116,10 +161,10 @@ export default function CenteredGrid() {
 
                 <Grid container spacing={4} >
                   <Grid item xs={6}>
-                    <TextField size="small"  label="First Name" placeholder="First Name"  defaultValue="sargun" variant="outlined" />
+                    <TextField size="small"  label="First Name"  value={details.first_name} onChange={ (e) => setDetails( {...details,first_name:e.target.value}) } variant="outlined" />
                   </Grid>
                   <Grid item xs={6} >
-                    <TextField size="small"  label="Last Name"  placeholder="Last Name"   defaultValue="narula"  variant="outlined"  />
+                    <TextField size="small"  label="Last Name"    value={details.last_name} onChange={ (e) => setDetails( {...details,last_name:e.target.value}) } variant="outlined"  />
                   </Grid>
                 </Grid>
                 
@@ -129,7 +174,7 @@ export default function CenteredGrid() {
 
                 <Grid container spacing={4} >
                   <Grid item xs={12}>
-                    <TextField size="small"  label="College Name" placeholder="College Name"  defaultValue="Harvard" variant="outlined" fullWidth/>
+                    <TextField size="small"  label="College Name" placeholder="College Name"  value={details.college} onChange={ (e) => setDetails( {...details,college:e.target.value}) } variant="outlined" fullWidth/>
                   </Grid>
                 </Grid>
                 
@@ -139,13 +184,13 @@ export default function CenteredGrid() {
 
                 <Grid container spacing={4} >
                   <Grid item xs={4}>
-                    <TextField size="small"  label="Year of Graduation" placeholder="Year of Graduation"  defaultValue="2021" variant="outlined" />
+                    <TextField size="small"  label="Year of Graduation"  value={details.year} onChange={ (e) => setDetails( {...details,year:e.target.value}) } variant="outlined" />
                   </Grid>
                   <Grid item xs={4} >
-                    <TextField size="small"  label="Degree"  placeholder="Degree"   defaultValue="B.Tech"  variant="outlined"  />
+                    <TextField size="small"  label="Degree"  value={details.degree} onChange={ (e) => setDetails( {...details,degree:e.target.value}) } variant="outlined"  />
                   </Grid>
                   <Grid item xs={4}>
-                    <TextField size="small"  label="Country" placeholder="Country"  defaultValue="US" variant="outlined" />
+                    <TextField size="small"  label="Country"  value={details.country} onChange={ (e) => setDetails( {...details,country:e.target.value}) } variant="outlined" />
                   </Grid>
                 </Grid>
                 
@@ -166,7 +211,7 @@ export default function CenteredGrid() {
                   </Grid>
 
                   <Grid item xs={12}>
-                  <TextareaAutosize style={{width:'100%' }} aria-label="About" minRows={5} placeholder="I am a Coder !!" multiline/>
+                  <TextareaAutosize style={{width:'100%' }} aria-label="About" minRows={5} placeholder="I am a Coder !!" value={details.about} onChange={ (e) => setDetails( {...details,about:e.target.value}) } multiline/>
                   </Grid>
                 </Grid>
                 

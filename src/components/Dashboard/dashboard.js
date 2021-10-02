@@ -23,7 +23,6 @@ import Whiteboard from './whiteboard.js'
 import Profile    from './profile.js'
 
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -81,9 +80,10 @@ const useStyles = makeStyles((theme) => ({
   
 }));
  
-export default function Dashboard() {
+export default function Dashboard(props) {
   const classes = useStyles();
 
+  console.log(props.location.state.user)
   const [meetings    , set_meetings ] = React.useState(true)
   const [room        , set_room     ] = React.useState(false)
   const [activity    , set_activity ] = React.useState(false)
@@ -166,7 +166,7 @@ export default function Dashboard() {
           {room         ? <Room />       : ''}
           {activity     ? <Activity />   : ''}
           {whiteboards  ? <Whiteboard /> : ''}
-          {profile      ? <Profile />    : ''}
+          {profile      ? <Profile {...props}/>    : ''}
 
           </div>
 
