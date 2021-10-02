@@ -83,6 +83,7 @@ export default function LoginMain(props) {
 
   // Dashboard component
   function dashboard(){
+
     axios.post('http://localhost:8000/api/login/',{
       "username":username,
       "password":values.password
@@ -174,7 +175,7 @@ export default function LoginMain(props) {
                 textTransform: 'none',
                 display: "inline"
               }}
-                onClick={showSignUp}
+              onClick={() => push('/homepage')}
               >
                 <Typography variant="caption" gutterBottom style={{ fontWeight: '600' }}>
                   Create Account

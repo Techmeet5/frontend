@@ -82,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
  
 export default function Dashboard(props) {
   const classes = useStyles();
-z
   const [meetings    , set_meetings ] = React.useState(true)
   const [room        , set_room     ] = React.useState(false)
   const [activity    , set_activity ] = React.useState(false)
