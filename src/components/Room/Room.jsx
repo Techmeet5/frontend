@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 
 function Room(){
     function startConference() {
-        const domain = "webcall.paulla.asso.fr";
+        const domain = "meet.jit.si";
         const options = {
-          roomName: 'techmate_sra',
+          roomName: 'techmeet',
           parentNode: document.getElementById('jitsi-container'),
           configOverwrite: {
             disableInviteFunctions: true,

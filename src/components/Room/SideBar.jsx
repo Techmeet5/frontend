@@ -127,7 +127,7 @@ export default function SideBar() {
         </div>
         <Divider  />
           <List className={classes.divider}>
-            {['Video Confrence', 'Code Editor', 'WhiteBoard', 'Profiles'].map((text, index) => (
+            {['Video Conference', 'Code Editor', 'WhiteBoard', 'Profiles'].map((text, index) => (
               <ListItem button key={text} 
                         className={classes.li_item}
                         onClick={() => showPage(index)}>

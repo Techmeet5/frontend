@@ -9,8 +9,8 @@ function VidConf(props) {
     containerStyle.height=0;
     containerStyle.width=0;
   }else{
-    containerStyle.height='800px';
-    containerStyle.width='1500px';
+    containerStyle.height='850px';
+    containerStyle.width='100%';
   }
   return (
     <div>
