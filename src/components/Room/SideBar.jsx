@@ -11,6 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import VidConf from './VidConf';
+import Editor from './Editor';
 import WhiteBoard from './WhiteBoard';      
 
 const drawerWidth = 240;
@@ -147,7 +148,7 @@ export default function SideBar() {
 
         <div>
             <VidConf data={VideoConference} />
-            {/* {room         ? <Room />       : ''} */}
+            {CodeEditor  ? <Editor />    : ''}
             {/* {profile      ? <Profile />    : ''} */}
             {Whiteboard  ? <WhiteBoard/> : ''}
         </div>

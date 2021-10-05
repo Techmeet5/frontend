@@ -175,7 +175,7 @@ export default function LoginMain(props) {
                 textTransform: 'none',
                 display: "inline"
               }}
-              onClick={() => push('/homepage')}
+              onClick={showSignUp}
               >
                 <Typography variant="caption" gutterBottom style={{ fontWeight: '600' }}>
                   Create Account
