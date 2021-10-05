@@ -39,6 +39,9 @@ function Room(){
             SHOW_JITSI_WATERMARK: false,
             DEFAULT_LOGO_URL: null,
             DEFAULT_WELCOME_PAGE_LOGO_URL:null,
+            SETTINGS_SECTIONS: [ 'devices', 'language', 'moderator', 'profile', 'sounds' ],
+            SHOW_CHROME_EXTENSION_BANNER: false,
+
           }
         };
     
