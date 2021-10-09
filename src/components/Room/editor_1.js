@@ -1,20 +1,21 @@
 import { React, useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles';
-import Paper          from '@material-ui/core/Paper';
-import Grid           from '@material-ui/core/Grid';
-import FormControl    from '@material-ui/core/FormControl';
-import Select         from '@material-ui/core/Select';
-import MenuItem       from '@material-ui/core/MenuItem';
-import Button         from '@material-ui/core/Button';
-import SendIcon       from '@material-ui/icons/Send';
-import Divider        from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
+import Divider from '@material-ui/core/Divider';
 
 
-import SimpleEditor from "./Editor_2.jsx"
+import Editor_2 from "./editor_2"
 import './monaco.css'
 
-const axios = require('axios')
+
+
 
 const useStyles = makeStyles((theme) => ({
   controls_1: {
@@ -37,11 +38,11 @@ const useStyles = makeStyles((theme) => ({
     border: "solid",
     borderColor: "blue",
     margin: 10,
-    minHeight: '90vh'
+    minHeight: '450px',
   },
   pre: {
     height: 'auto',
-    maxHeight: '90vh',
+    maxHeight: '450px',
     overflow: 'auto',
     overflowY: 'none',
     backgroundColor: '#eeeeee',
@@ -52,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
     border: 'solid',
     borderColor: 'black',
     margin: 10,
-    minHeight: '90vh'
   },
   formControl: {
     minWidth: 120,
@@ -77,57 +77,74 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Editor() {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Editor_1(props) {
   const classes = useStyles();
 
 
+  const [hook, setHook] = useState({
+      'code': '',
+      'lang': 'python',
+      'output': '',
+      'perm': false
+  })
 
 
-  // Hooks
-
-  const [value, setValue] = useState('');
-
-  const [lang, setlang] = useState('python3');
-
-  const [output, setOutput] = useState('');
+  console.log("render Editor_1",hook)
 
 
-
-  // Functions
 
   const handleLangChange = (event) => {
-    setlang(event.target.value);
-    console.log(lang)
+    props.websocket.send(JSON.stringify({code:'',lang:event.target.value}))
   };
 
 
-  const submit_code = () => {
 
-    console.log("submitted code - ", value)
-    axios.post('http://127.0.0.1:8001/api/code', {
-      lang,
-      code: value
+
+  props.websocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    
+    console.log(data['code'])
+    console.log(data['lang'])
+    console.log(data['output'])
+    console.log(data['perm'])
+    setHook({
+        'code': data['code'],
+        'lang': data['lang'],
+        'output': data['output'],
+        'perm': data['perm']
     })
-      .then((response) => {
-        console.log(response);
-        setOutput(response['data'])
-      }, (error) => {
-        console.log(error);
-      });
+  };  
+    
+ 
+  function submit_code(){
+    props.websocket.send(JSON.stringify({code:hook['code'],lang:'compile'}))
   }
 
 
 
   return (
-
-
     <Grid container
       direction="row"
       justifyContent="space-around"
       alignItems="stretch"
-      style={{background:'snow'}}
     >
 
       <Grid item xs={12}>
@@ -150,15 +167,13 @@ function Editor() {
                       <Grid item xs={6}>
                         <FormControl className={classes.formControl}>
                           <Select
-                            value={lang}
+                            value={hook['lang']}
                             onChange={handleLangChange}
-
                             className={classes.selectEmpty}
-
                           >
                             <MenuItem value={"cpp"}><b>C++</b></MenuItem>
                             <MenuItem value={"java"}><b>Java</b></MenuItem>
-                            <MenuItem value={"python3"}><b>Python</b></MenuItem>
+                            <MenuItem value={"python"}><b>Python</b></MenuItem>
                           </Select>
                         </FormControl>
                       </Grid>
@@ -223,16 +238,18 @@ function Editor() {
 
               <Grid item xs={6} >
                 <Paper className={classes.text}>
-                  <SimpleEditor
-                    lang={lang}
-                    parent_function={code_value => setValue(code_value)} />
+                  <Editor_2
+                    lang={hook['lang']}
+                    websocket={props.websocket}
+                    hook={hook}
+                     />
                 </Paper>
               </Grid>
 
               <Grid item xs={6}>
                 <Paper className={classes.controls_3} >
                   {/*  <Output/> */}
-                  <pre className={classes.pre}>{output}</pre>
+                  <pre className={classes.pre}>{hook['output']}</pre>
                 </Paper>
               </Grid>
 
@@ -249,4 +266,4 @@ function Editor() {
 
 }
 
-export default Editor;
+export default Editor_1;
