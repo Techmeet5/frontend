@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Editor from '@monaco-editor/react'
 
-function Editor_2(props) {
+function Editor2(props) {
 
     console.log("render Editor_2")
    /*  props.websocket.onmessage = function(e) {
@@ -40,4 +40,4 @@ function Editor_2(props) {
     )
 }
 
-export default Editor_2
+export default Editor2

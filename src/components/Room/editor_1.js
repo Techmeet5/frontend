@@ -11,7 +11,7 @@ import SendIcon from '@material-ui/icons/Send';
 import Divider from '@material-ui/core/Divider';
 
 
-import Editor_2 from "./editor_2"
+import Editor2 from "./editor_2"
 import './monaco.css'
 
 
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function Editor_1(props) {
+function Editor1(props) {
   const classes = useStyles();
 
 
@@ -238,7 +238,7 @@ function Editor_1(props) {
 
               <Grid item xs={6} >
                 <Paper className={classes.text}>
-                  <Editor_2
+                  <Editor2
                     lang={hook['lang']}
                     websocket={props.websocket}
                     hook={hook}
@@ -266,4 +266,4 @@ function Editor_1(props) {
 
 }
 
-export default Editor_1;
+export default Editor1;

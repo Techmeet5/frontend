@@ -1,5 +1,5 @@
 import React from 'react'
-import Editor_1 from './editor_1'
+import Editor1 from './editor_1'
 
 
 function Editor(){
@@ -12,7 +12,7 @@ function Editor(){
       };
       
     return(
-        <Editor_1 websocket={websocket} />
+        <Editor1 websocket={websocket} />
     )
 
 }
