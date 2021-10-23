@@ -84,7 +84,7 @@ export default function LoginMain(props) {
   // Dashboard component
   function dashboard(){
 
-    axios.post('http://localhost:8000/api/login/',{
+    axios.post('http://codeeditor-backend.herokuapp.com:8000/api/login/',{
       "username":username,
       "password":values.password
     })
