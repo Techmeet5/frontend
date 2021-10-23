@@ -67,7 +67,7 @@ export default function CenteredGrid() {
       room_name   : meeting['name'],
       start_time  : meeting['start'],
       end_time    : meeting['end'],
-      participant_1: meeting['persons'][0],
+      host: meeting['persons'][0],
       participant_2: meeting['persons'][1],
       participant_3: meeting['persons'][2],
       participant_4: meeting['persons'][3],
