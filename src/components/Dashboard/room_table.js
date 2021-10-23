@@ -35,10 +35,12 @@ export default function UserTable(props) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
 
-          {props.data.username.map((key,value) => (
+          {props.data.map((key,value) => (
             <TableRow key={value}>
-
-              <TableCell> {key} </TableCell>
+            
+              <TableCell> {key['username']} </TableCell>
+              <TableCell> {key['name']} </TableCell>
+              <TableCell> {key['email']} </TableCell>
               <TableCell align="right">
                     <Button variant="contained" onClick={() => add_user(key,value)}>ADD</Button>
               </TableCell>

@@ -1,16 +1,20 @@
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Paper          from '@material-ui/core/Paper';
+import Grid           from '@material-ui/core/Grid';
+import TextField      from '@material-ui/core/TextField';
+import Button         from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import { Typography } from '@material-ui/core';
-import Room from '../Room/Room';
-import axios from 'axios';
-import UserTable from './room_table'
+
+import axios                   from 'axios';
+import { useEffect, useState } from 'react';
+
+// Search Options Components
+import UserTable  from './room_table'
+
+// Selected Users Component
 import UserTable2 from './room_table2'
 
-import { useEffect, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +37,7 @@ export default function CenteredGrid() {
 
 
   // For table 1
-  const [userdata, setUserdata] = useState({username: []})
+  const [userdata, setUserdata] = useState([])
   // For table 2
   const [selected, setSelected] = useState([])
 
@@ -81,7 +85,7 @@ export default function CenteredGrid() {
         .catch((error) => {
           console.log("Schedule Error\n",error)
         })
-    }
+  }
   
 
 
@@ -100,7 +104,7 @@ export default function CenteredGrid() {
           console.log("Search Error\n",error)
         })
       }
-    }
+  }
 
     useEffect( () => { setMeeting({...meeting,persons:selected}) },[selected])
 
