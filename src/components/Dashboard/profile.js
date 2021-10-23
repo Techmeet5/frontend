@@ -66,7 +66,7 @@ export default function CenteredGrid(props) {
 
   console.log("Inside profile")
   console.log(details)
-  const url = 'https://codeeditor-backend.herokuapp.com:8000/api/profile/'+props.location.state.user
+  const url = 'https://codeeditor-backend.herokuapp.com/api/profile/'+props.location.state.user
   
   
 
