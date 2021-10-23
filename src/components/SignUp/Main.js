@@ -97,7 +97,7 @@ export default function SignUpMain(props) {
   }
 
   function Login(event) {
-    axios.post('http://localhost:8000/api/add/',{
+    axios.post('https://codeeditor-backend.herokuapp.com:8000/api/add/',{
 
         "username":username,
         "email":email,       

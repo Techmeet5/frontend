@@ -35,7 +35,7 @@ export default function Bar() {
 
 
     function get_data() {
-        axios.get('http://localhost:8000/api/meetings/')
+        axios.get('https://codeeditor-backend.herokuapp.com:8000/api/meetings/')
             .then((response) => {
                 console.log(response)
                 console.log("Api Called")

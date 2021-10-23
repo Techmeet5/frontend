@@ -73,7 +73,7 @@ export default function CenteredGrid() {
       participant_4: meeting['persons'][3],
     }
 
-    axios.post('http://localhost:8000/api/meetings/',server_meeting)
+    axios.post('https://codeeditor-backend.herokuapp.com:8000/api/meetings/',server_meeting)
         .then((response) => {
           console.log(response)
           console.log("Api Sent")
