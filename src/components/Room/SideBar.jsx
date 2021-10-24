@@ -1,18 +1,20 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import VidConf from './VidConf';
-import Editor from './Editor';
-import WhiteBoard from './WhiteBoard';      
+import Drawer         from '@material-ui/core/Drawer';
+import CssBaseline    from '@material-ui/core/CssBaseline';
+import AppBar         from '@material-ui/core/AppBar';
+import Toolbar        from '@material-ui/core/Toolbar';
+import List           from '@material-ui/core/List';
+import Typography     from '@material-ui/core/Typography';
+import Divider        from '@material-ui/core/Divider';
+import ListItem       from '@material-ui/core/ListItem';
+import ListItemIcon   from '@material-ui/core/ListItemIcon';
+import ListItemText   from '@material-ui/core/ListItemText';
+
+import VidConf        from './VidConf';
+import Editor         from './Editor';
+import WhiteBoard     from './WhiteBoard';
+import Profile        from './Profiles'   
 
 const drawerWidth = 240;
 
@@ -149,7 +151,7 @@ export default function SideBar() {
         <div>
             <VidConf data={VideoConference} />
             {CodeEditor  ? <Editor />    : ''}
-            {/* {profile      ? <Profile />    : ''} */}
+            {Profiles     ? <Profile />   : ''}
             {Whiteboard  ? <WhiteBoard/> : ''}
         </div>
 

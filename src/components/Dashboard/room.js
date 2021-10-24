@@ -61,9 +61,9 @@ export default function CenteredGrid() {
     setSelected(selected.filter(item => item !== key))
   }
 
-  function update_meeting(){
-    setMeeting({...meeting, persons:selected})
-  }
+  //function update_meeting(){
+    //setMeeting({...meeting, persons:selected})
+  //}
 
 
 
