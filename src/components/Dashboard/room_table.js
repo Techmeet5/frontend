@@ -25,8 +25,8 @@ export default function UserTable(props) {
 
   function add_user(key,value){
     props.func(key)
-    const index = props.data.username.indexOf(key)
-    delete props.data.username[index]
+    const index = props.data.indexOf(key)
+    delete props.data[index]
   }
   
 

@@ -45,7 +45,10 @@ export default function UserTable2(props) {
           {props.data.map((key,value) => (
             <TableRow key={value}>
 
-              <TableCell className={classes.text}> {key} </TableCell>
+              <TableCell className={classes.text}> {key['username']} </TableCell>
+              <TableCell className={classes.text}> {key['name']} </TableCell>
+              <TableCell className={classes.text}> {key['email']} </TableCell>
+
               <TableCell align="right">
                     <Button variant="contained" 
                             color="secondary" 
