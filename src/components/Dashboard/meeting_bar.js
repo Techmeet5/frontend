@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px',
         //background: "#fce0de",
         background:"#F9F3DF",
-        marginTop: "10vh"
+        marginTop: "5vh"
     }
 }));
 
@@ -39,10 +39,10 @@ export default function Bar() {
             .then((response) => {
                 console.log(response)
                 console.log("Api Called")
-                setDetails(response['data'])
+                setDetails(response['data'].reverse())
             })
             .catch((error) => {
-                console.log("Meeting Error - \n", error)
+                console.log("Meeting Details Error - \n", error)
             })
     }
 
@@ -89,7 +89,7 @@ export default function Bar() {
                                 </Grid>
                             </Grid>
 
-
+ 
                             <Grid item />
 
 

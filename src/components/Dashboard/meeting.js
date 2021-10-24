@@ -1,7 +1,11 @@
+import {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper          from '@material-ui/core/Paper';
 import Grid           from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
+
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox         from '@material-ui/core/Checkbox';
 
 import Bar from './meeting_bar'
 
@@ -14,22 +18,35 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  
+  checkbox:{
+    fontSize: '24px',
+    marginLeft: '4px'
+  }
+
 }));
  
 export default function Meetings() {
   const classes = useStyles();
+
+  const [state, setState] = useState({
+    checkedHosted: true,
+    checkedInvited: false,
+  });
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
 
   return (
     <div className={classes.root}>
 
       <Grid container spacing={3}>
         
-        <Grid item xs={1}></Grid>
+        <Grid item xs={0}></Grid>
         
         
         
-        <Grid item xs={10}>
+        <Grid item xs={11}>
 
           <Paper className={classes.paper}>
 
@@ -37,10 +54,50 @@ export default function Meetings() {
 
                 <Grid item>
                   <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                      <Typography variant="h5" style={{textAlign:'left',fontWeight:'bold',marginTop:'20px'}}>
+                    <Grid item xs={6}>
+                      <Typography variant="h5" style={{textAlign:'left',fontWeight:'bold',marginTop:'20px',color: '#120e0e'}}>
                         SCHEDULED MEETINGS
                       </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+
+                      <FormControlLabel
+                          control={
+                            <Checkbox checked={state.checkedHosted}
+                                      onChange={handleChange} 
+                                      name="checkedHosted"
+                                      style={{
+                                        transform: "scale(1.2)",
+                                      }}
+                             />
+                            }
+                            label={
+                              <Typography variant="subtitle2" 
+                                          color="#000" 
+                                          className={classes.checkbox} >
+                                      Hosted
+                              </Typography>}
+                      />
+
+                      <FormControlLabel
+                              control={
+                                <Checkbox
+                                  checked={state.checkedInvited}
+                                  onChange={handleChange}
+                                  name="checkedInvited"
+                                  style={{
+                                    transform: "scale(1.2)",
+                                  }}
+                                />
+                              }
+                              label={
+                                <Typography variant="subtitle2" 
+                                            color="#000" 
+                                            className={classes.checkbox} >
+                                        Invited
+                                </Typography>
+                              }
+                            />
                     </Grid>
                   </Grid>
                 </Grid>

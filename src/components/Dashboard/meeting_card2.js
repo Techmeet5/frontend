@@ -23,10 +23,10 @@ export default function Card2(props){
                     <Grid container spacing={3}>
                         <Grid item xs={1}></Grid>
                         <Grid item xs={5}>
-                            <Card name={props.participant_1} />
+                            <Card username={props.host} name={props.host_name} email={props.host_email} />
                         </Grid>
                         <Grid item xs={5}>
-                            <Card name={props.participant_2}  />
+                            <Card username={props.participant_2} name={props.participant_2_name} email={props.participant_2_email}  />
                         </Grid>
                         <Grid item xs={1}></Grid>
                     </Grid>
@@ -38,10 +38,10 @@ export default function Card2(props){
                     <Grid container spacing={3}>
                         <Grid item xs={1}></Grid>
                         <Grid item xs={5}>
-                            <Card name={props.participant_3}  />
+                            <Card username={props.participant_3} name={props.participant_3_name} email={props.participant_3_email}  />
                         </Grid>
                         <Grid item xs={5}>
-                            <Card name={props.participant_4}  />
+                            <Card username={props.participant_4} name={props.participant_4_name} email={props.participant_4_email}  />
                         </Grid>
                         <Grid item xs={1}></Grid>
 
