@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card                     from '@material-ui/core/Card';
 import CardContent              from '@material-ui/core/CardContent';
-import CardMedia                from '@material-ui/core/CardMedia';
 import Typography               from '@material-ui/core/Typography';
 
 import companyLogo from './pic.png';
@@ -36,12 +35,12 @@ const useStyles = makeStyles(() => ({
 export default function AvatarCard(props) {
     const classes = useStyles();
 
-    console.log(props)
+    console.log("Inside Avatar card",props)
     return (
         <Card className={classes.root}>
 
             <div className={classes.image}>
-                <img  className={classes.img} src={companyLogo} />
+                <img  className={classes.img} src={companyLogo} alt="" />
             </div>
 
             <div className={classes.details}>
@@ -50,10 +49,10 @@ export default function AvatarCard(props) {
                         {props.name}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        @sargun
+                        @{props.username}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        sargun.narula5@gmail.com
+                        {props.email}
                     </Typography>
                 </CardContent>
             </div>

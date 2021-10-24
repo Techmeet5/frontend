@@ -100,7 +100,8 @@ export default function CenteredGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={3}>
         
-        <Grid item xs={4}>
+        <Grid item xs={0}></Grid>
+        <Grid item xs={3}>
           <Paper className={classes.paper}>
 
           <Card className={classes.root2}>

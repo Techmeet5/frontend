@@ -26,7 +26,7 @@ export default function CenteredGrid() {
 
       <Grid container spacing={3}>
         
-        
+        <Grid item xs={0}></Grid>
         
         <Grid item xs={11}>
           <Paper className={classes.paper}>

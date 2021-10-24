@@ -1,8 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Paper          from '@material-ui/core/Paper';
+import Grid           from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +19,7 @@ export default function CenteredGrid() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
+        <Grid item xs={0}></Grid>
         <Grid item xs={11}>
           <Paper className={classes.paper}>
             <Grid container direction="column" spacing={3}>
