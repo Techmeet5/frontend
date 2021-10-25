@@ -7,8 +7,8 @@ import Card            from '@material-ui/core/Card';
 import CardMedia       from '@material-ui/core/CardMedia';
 import CardContent     from '@material-ui/core/CardContent';
 import TextInfoContent from '@mui-treasury/components/content/textInfo';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import TextField       from '@material-ui/core/TextField';
+import Button          from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import { Divider, Typography } from '@material-ui/core';
@@ -66,7 +66,8 @@ export default function CenteredGrid(props) {
 
   console.log("Inside profile")
   console.log(details)
-  const url = 'https://codeeditor-backend.herokuapp.com/api/profile/'+props.location.state.user
+  console.log(props.location.state.user)
+  const url = 'https://codeeditor-backend.herokuapp.com/api/profile/'+'Q'
   
   
 
@@ -92,7 +93,9 @@ export default function CenteredGrid(props) {
             
   })
   .catch((error)=>{})
-  },[])
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [])
   
   
   

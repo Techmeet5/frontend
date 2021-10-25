@@ -121,7 +121,7 @@ export default function CenteredGrid() {
         })
       }
   }
-
+    // eslint-disable-next-line
     useEffect( () => { setMeeting({...meeting,persons:selected}) },[selected])
 
 

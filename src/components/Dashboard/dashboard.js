@@ -1,17 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Drawer         from '@material-ui/core/Drawer';
+import CssBaseline    from '@material-ui/core/CssBaseline';
+import AppBar         from '@material-ui/core/AppBar';
+import Toolbar        from '@material-ui/core/Toolbar';
+import List           from '@material-ui/core/List';
+import Typography     from '@material-ui/core/Typography';
+import Divider        from '@material-ui/core/Divider';
+import ListItem       from '@material-ui/core/ListItem';
+import ListItemIcon   from '@material-ui/core/ListItemIcon';
+import ListItemText   from '@material-ui/core/ListItemText';
+import InboxIcon      from '@material-ui/icons/MoveToInbox';
+import MailIcon       from '@material-ui/icons/Mail';
 
 import './svg.css'
 import { ReactComponent as Bell} from '../../svg/bell_icon.svg'          
@@ -29,36 +29,27 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     backgroundColor: '#c9c9c9',
-
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     backgroundColor: "#fff",
     color: "#212529",
-
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    //backgroundColor: "#343a40"
-
   },
   drawerPaper: {
     width: drawerWidth,
     background: 'linear-gradient(#66615b,#000 80%)',
-    //backgroundColor: "#343a40",
-    //backgroundColor: "#ffffff",
-    //color: "#fbc658",
     color: "#fff",
     textTransform: "uppercase"
-
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    //backgroundColor: theme.palette.background.default,
     backgroundColor: '#c9c9c9',
     padding: theme.spacing(3),
   },
@@ -160,11 +151,11 @@ export default function Dashboard(props) {
         <div className={classes.toolbar} />
 
         <div>
-          {meetings     ? <Meeting />    : ''}
-          {room         ? <Room />       : ''}
-          {activity     ? <Activity />   : ''}
-          {whiteboards  ? <Whiteboard /> : ''}
-          {profile      ? <Profile {...props}/>    : ''}
+          {meetings     ? <Meeting {...props} />    : ''}
+          {room         ? <Room />                  : ''}
+          {activity     ? <Activity />              : ''}
+          {whiteboards  ? <Whiteboard />            : ''}
+          {profile      ? <Profile {...props}/>     : ''}
 
           </div>
 

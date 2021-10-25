@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
 export default function AvatarCard(props) {
     const classes = useStyles();
 
-    console.log("Inside Avatar card",props)
+//    console.log("Inside Avatar card",props)
     return (
         <Card className={classes.root}>
 
