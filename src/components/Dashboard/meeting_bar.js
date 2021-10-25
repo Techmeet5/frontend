@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import { useHistory } from "react-router-dom";
+import Grid   from '@material-ui/core/Grid';
 
 import Card1 from './meeting_card1';
 import Card2 from './meeting_card2';
@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         borderRadius: '20px',
-        //background: "#fce0de",
         background:"#F9F3DF",
         marginTop: "5vh"
     }
@@ -25,30 +24,52 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Bar() {
+export default function Bar(props) {
     const { push } = useHistory();
     const classes = useStyles();
 
-    const [details, setDetails] = useState([])
+    const [details, setDetails]   = useState([])
     console.log("details -", details)
+    console.log(props)
 
+    function get_data(url) {
+        console.log("url -",url)
+        
+    }
 
+    
+    useEffect( () => {
 
-    function get_data() {
-        axios.get('https://codeeditor-backend.herokuapp.com/api/meetings/')
+        let url = ""
+        if(props.box.checkedHosted == true & props.box.checkedInvited == true){
+            url = 'https://codeeditor-backend.herokuapp.com/api/meetings/all/'
+        }
+        else if(props.box.checkedHosted == true){
+            url = 'https://codeeditor-backend.herokuapp.com/api/meetings/hosted/'
+        }
+        else if(props.box.checkedInvited == true){
+            url = 'https://codeeditor-backend.herokuapp.com/api/meetings/invited/'            
+        }
+        else if(props.box.checkedHosted == false & props.box.checkedInvited == false){
+            url = ''
+        }
+
+        axios.post(url,{"username":props.location.state.user})
             .then((response) => {
                 console.log(response)
-                console.log("Api Called")
+                console.log("Invite Api Called")
                 setDetails(response['data'].reverse())
             })
             .catch((error) => {
                 console.log("Meeting Details Error - \n", error)
+                setDetails([])
             })
-    }
+        
+
+    }, [props] )
+    
 
 
-
-    useEffect(() => get_data(), [])
 
 
 

@@ -25,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
 
 }));
  
-export default function Meetings() {
+export default function Meetings(props) {
   const classes = useStyles();
 
   const [state, setState] = useState({
     checkedHosted: true,
     checkedInvited: false,
   });
-
+  console.log(state.checkedHosted)
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
@@ -64,7 +64,8 @@ export default function Meetings() {
                       <FormControlLabel
                           control={
                             <Checkbox checked={state.checkedHosted}
-                                      onChange={handleChange} 
+                                      onChange={handleChange}
+                                      onClick={() => console.log("Hosted clicked")} 
                                       name="checkedHosted"
                                       style={{
                                         transform: "scale(1.2)",
@@ -84,6 +85,7 @@ export default function Meetings() {
                                 <Checkbox
                                   checked={state.checkedInvited}
                                   onChange={handleChange}
+                                  onClick={() => console.log("Invited clicked")} 
                                   name="checkedInvited"
                                   style={{
                                     transform: "scale(1.2)",
@@ -106,7 +108,7 @@ export default function Meetings() {
                 <Grid item>
                   <Grid container>
                     <Grid item xs={12}>
-                      <Bar />
+                      <Bar box={state} {...props} />
                     </Grid>
                   </Grid>
                 </Grid>
