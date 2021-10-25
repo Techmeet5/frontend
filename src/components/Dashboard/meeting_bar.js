@@ -32,25 +32,20 @@ export default function Bar(props) {
     console.log("details -", details)
     console.log(props)
 
-    function get_data(url) {
-        console.log("url -",url)
-        
-    }
-
     
     useEffect( () => {
 
         let url = ""
-        if(props.box.checkedHosted == true & props.box.checkedInvited == true){
+        if(props.box.checkedHosted === true & props.box.checkedInvited === true){
             url = 'https://codeeditor-backend.herokuapp.com/api/meetings/all/'
         }
-        else if(props.box.checkedHosted == true){
+        else if(props.box.checkedHosted === true){
             url = 'https://codeeditor-backend.herokuapp.com/api/meetings/hosted/'
         }
-        else if(props.box.checkedInvited == true){
+        else if(props.box.checkedInvited === true){
             url = 'https://codeeditor-backend.herokuapp.com/api/meetings/invited/'            
         }
-        else if(props.box.checkedHosted == false & props.box.checkedInvited == false){
+        else if(props.box.checkedHosted === false & props.box.checkedInvited === false){
             url = ''
         }
 
