@@ -6,7 +6,7 @@ function WhiteBoard(){
         title="notitle" 
         allowtransparency="true"
         style={{backgroundColor: "Snow"}}
-        src="http://whiteboard-techmeet/boards/QfOCmUeE8xPiTviRp9Ue1GVd-YWdvWbA54l2IrZJS5E-"
+        src="http://whiteboard-techmeet.herokuapp.com/boards/QfOCmUeE8xPiTviRp9Ue1GVd-YWdvWbA54l2IrZJS5E-"
         frameborder="0"
         height="850px"
         width="100%">
