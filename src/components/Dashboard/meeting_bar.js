@@ -37,7 +37,7 @@ export default function Bar(props) {
 
         let url = ""
         if(props.box.checkedHosted === true & props.box.checkedInvited === true){
-            url = 'https://codeeditor-backend.herokuapp.com/api/meetings/all/'
+            url = 'https://codeeditor-backend.herokuapp.com/api/meetings/total/'
         }
         else if(props.box.checkedHosted === true){
             url = 'https://codeeditor-backend.herokuapp.com/api/meetings/hosted/'
@@ -96,7 +96,12 @@ export default function Bar(props) {
                                         <Button
                                             style={{ width: '100%' }}
                                             variant="contained"
-                                            onClick={() => push('/room')}
+                                            onClick={() => push( { 
+                                                pathname: "/room", 
+                                                state: {
+                                                  user: props.location.state.user
+                                                }
+                                              })}
                                         >
                                             START
                                         </Button>

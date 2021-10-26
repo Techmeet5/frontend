@@ -98,8 +98,8 @@ export default function LoginMain(props) {
        
         push( { 
           pathname: "/homepage", 
-          state: {
-            user: username
+          state:  {
+            user: username,
           }
         })
         

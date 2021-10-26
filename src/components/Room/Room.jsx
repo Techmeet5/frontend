@@ -1,12 +1,17 @@
 import SideBar from './SideBar';
 import React, { useEffect } from 'react';
 
-function Room(){
+function Room(props){
+
     function startConference() {
         const domain = "meet.jit.si";
         const options = {
           roomName: 'techmeet',
           parentNode: document.getElementById('jitsi-container'),
+          userInfo: {
+            email: 'email@jitsiexamplemail.com',
+            displayName: props.location.state.user
+          },
           configOverwrite: {
             disableInviteFunctions: true,
             disablePolls: true,
@@ -54,10 +59,10 @@ function Room(){
         // verify the JitsiMeetExternalAPI constructor is added to the global..
         startConference();
       });
-        return (
-            <div>
-                <SideBar />
-            </div>
-        );
+      return (
+          <div>
+              <SideBar />
+          </div>
+      );
     }
 export default Room;

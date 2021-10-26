@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pre: {
     height: 'auto',
-    maxHeight: '450px',
+    minHeight: '70vh',
     overflow: 'auto',
     overflowY: 'none',
     backgroundColor: '#eeeeee',

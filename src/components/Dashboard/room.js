@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function CenteredGrid() {
+export default function CenteredGrid(props) {
   const { push } = useHistory();
   const classes = useStyles();
 
@@ -40,6 +40,7 @@ export default function CenteredGrid() {
   const [userdata, setUserdata] = useState([])
   // For table 2
   const [selected, setSelected] = useState([])
+  console.log("selected - ",selected)
 
 
   const [meeting, setMeeting] = useState({
@@ -53,17 +54,18 @@ export default function CenteredGrid() {
 
   // Function which is sent to table 1 component 
   function add_data(data){
-    setSelected(selected.concat(data).reverse())
+    if(selected.length<4){
+      setSelected(selected.concat(data).reverse())
+    }
+    else{
+      console.log("Array is Full")
+    }
   }
 
   // Function which is sent to table 2 component 
   function delete_data(key){ 
     setSelected(selected.filter(item => item !== key))
   }
-
-  //function update_meeting(){
-    //setMeeting({...meeting, persons:selected})
-  //}
 
 
 
@@ -95,7 +97,7 @@ export default function CenteredGrid() {
           console.log(response)
           console.log("Api Sent")
           // To reload after scheduling
-          push('/')
+          push('/homepage')
           
         })
         .catch((error) => {
@@ -121,7 +123,7 @@ export default function CenteredGrid() {
         })
       }
   }
-    // eslint-disable-next-line
+    // eslint-disable-next-line 
     useEffect( () => { setMeeting({...meeting,persons:selected}) },[selected])
 
 
@@ -220,7 +222,7 @@ export default function CenteredGrid() {
                   <Grid item xs={2}>
                     <Button 
                     variant="contained"
-                    onClick={() => push('/room')}>
+                    onClick={() => push("/room")}>
                       Start
                     </Button>
                   </Grid>
