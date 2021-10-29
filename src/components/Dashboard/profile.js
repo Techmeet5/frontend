@@ -79,17 +79,17 @@ export default function CenteredGrid(props) {
         console.log(response.data)
           setDetails(
             {
-              username: response.data.username,
-              email:response.data.email,
+              username  : response.data.username,
+              email     : response.data.email,
               first_name: response.data.first_name,
-              last_name: response.data.last_name,
-              college:response.data.college,
-              year: response.data.year,
-              degree:response.data.degree,
-              country:response.data.country,
-              about:response.data.about,
+              last_name : response.data.last_name,
+              college   : response.data.college,
+              year      : response.data.year,
+              degree    : response.data.degree,
+              country   : response.data.country,
+              about     : response.data.about,
             }
-            )
+          )
             
   })
   .catch((error)=>{})

@@ -70,29 +70,10 @@ export default function CenteredGrid(props) {
 
 
   function schedule(){
+
     
-    const server_meeting = {
-      room_name   : meeting['name'],
-      start_time  : meeting['start'],
-      end_time    : meeting['end'],
-      host: meeting['persons'][0]['username'],
-      host_name:  meeting['persons'][0]['name'],
-      host_email: meeting['persons'][0]['email'],
 
-      participant_2: meeting['persons'][1]['username'],
-      participant_2_name: meeting['persons'][1]['name'],
-      participant_2_email: meeting['persons'][1]['email'],
-
-      participant_3: meeting['persons'][2]['username'],
-      participant_3_name: meeting['persons'][2]['name'],
-      participant_3_email: meeting['persons'][2]['email'],
-
-      participant_4: meeting['persons'][3]['username'],
-      participant_4_name: meeting['persons'][3]['name'],
-      participant_4_email: meeting['persons'][3]['email'],
-    }
-
-    axios.post('https://codeeditor-backend.herokuapp.com/api/meetings/',server_meeting)
+    axios.post('https://codeeditor-backend.herokuapp.com/api/meetings/set/',meeting)
         .then((response) => {
           console.log(response)
           console.log("Api Sent")
