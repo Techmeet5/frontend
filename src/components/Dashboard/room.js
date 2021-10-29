@@ -33,13 +33,17 @@ export default function CenteredGrid(props) {
   const classes = useStyles();
 
 
-  
-
-
   // For table 1
   const [userdata, setUserdata] = useState([])
   // For table 2
-  const [selected, setSelected] = useState([])
+  const [selected, setSelected] = useState( [
+              
+          { "username":props.location.state.user,
+            "name"    :props.location.state.name,
+            "email"   :props.location.state.email
+          }
+      ])
+
   console.log("selected - ",selected)
 
 
@@ -63,8 +67,12 @@ export default function CenteredGrid(props) {
   }
 
   // Function which is sent to table 2 component 
-  function delete_data(key){ 
-    setSelected(selected.filter(item => item !== key))
+  function delete_data(key){
+    if(key['username']===props.location.state.user){}
+    else
+    {
+      setSelected(selected.filter(item => item !== key))
+    }
   }
 
 
@@ -96,6 +104,12 @@ export default function CenteredGrid(props) {
           "username":event.target.value,
         })
         .then((response) => {
+          const val = response.data.find(item => item.username === props.location.state.user)
+          const index = response.data.indexOf(val)
+          if (index > -1) {
+            response.data.splice(index, 1);
+          }
+
           setUserdata(response.data)
           
         })

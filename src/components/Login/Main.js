@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Input from '@material-ui/core/Input';
-import { useHistory } from "react-router-dom";
-import background from '../../svg/Login_design_svg.svg'
+import { makeStyles }     from '@material-ui/core/styles';
+import Paper              from '@material-ui/core/Paper';
+import Grid               from '@material-ui/core/Grid';
+import { Typography }     from '@material-ui/core';
+import Button             from '@material-ui/core/Button';
+import TextField          from '@material-ui/core/TextField';
+import IconButton         from '@material-ui/core/IconButton';
+import Visibility         from '@material-ui/icons/Visibility';
+import VisibilityOff      from '@material-ui/icons/VisibilityOff';
+import InputAdornment     from '@material-ui/core/InputAdornment';
+import Input              from '@material-ui/core/Input';
+import { useHistory }     from "react-router-dom";
+
+import background         from '../../svg/Login_design_svg.svg'
 import axios from 'axios';
 
 
@@ -84,22 +85,23 @@ export default function LoginMain(props) {
   // Dashboard component
   function dashboard(){
 
-    axios.post('https://codeeditor-backend.herokuapp.com/api/login/',{
+    axios.post('http://codeeditor-backend.herokuapp.com/api/login/',{
       "username":username,
       "password":values.password
     })
 
     .then((response) => {
-      console.log(response.data)
       if(response.data.login==="false"){
         console.log("Authentication Failed")
       }
       else if(response.data.login==="true"){
-       
+        
         push( { 
           pathname: "/homepage", 
           state:  {
             user: username,
+            name: response.data.details.first_name,
+            email: response.data.details.email
           }
         })
         
