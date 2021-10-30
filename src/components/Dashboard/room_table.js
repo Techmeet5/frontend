@@ -37,7 +37,7 @@ export default function UserTable(props) {
           {props.data.map((key,value) => (
             <TableRow key={value}>
             
-              <TableCell> {key['username']} </TableCell>
+              <TableCell> @{key['username']} </TableCell>
               <TableCell> {key['name']} </TableCell>
               <TableCell> {key['email']} </TableCell>
               <TableCell align="right">
