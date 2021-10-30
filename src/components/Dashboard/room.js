@@ -32,6 +32,20 @@ export default function CenteredGrid(props) {
   const { push } = useHistory();
   const classes = useStyles();
 
+  //to generate random strings
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  function generateString(length) {
+      let result = ' ';
+      const charactersLength = characters.length;
+      for ( let i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
+      return result;
+  }
+
+
   console.log(props)
 
   // For table 1
@@ -49,10 +63,12 @@ export default function CenteredGrid(props) {
 
 
   const [meeting, setMeeting] = useState({
-    name   : "none",
-    start  : "07:30",
-    end    : "07:30",
-    persons: []
+    name     : "none",
+    start    : "07:30",
+    end      : "07:30",
+    meet_url : generateString(10),
+    board_url: generateString(10),
+    persons  : []
   })
 
   console.log(meeting)
@@ -60,7 +76,7 @@ export default function CenteredGrid(props) {
   // Function which is sent to table 1 component 
   function add_data(data){
     if(selected.length<4){
-      setSelected(selected.concat(data).reverse())
+      setSelected(selected.concat(data))
     }
     else{
       console.log("Array is Full")

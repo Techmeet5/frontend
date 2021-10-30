@@ -99,7 +99,8 @@ export default function Bar(props) {
                                             onClick={() => push( { 
                                                 pathname: "/room", 
                                                 state: {
-                                                  user: props.location.state.user
+                                                  user: props.location.state.user,
+                                                  meet: ""
                                                 }
                                               })}
                                         >
