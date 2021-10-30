@@ -32,6 +32,7 @@ export default function CenteredGrid(props) {
   const { push } = useHistory();
   const classes = useStyles();
 
+  console.log(props)
 
   // For table 1
   const [userdata, setUserdata] = useState([])
