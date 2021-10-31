@@ -32,7 +32,7 @@ export default function Bar(props) {
     console.log("details -", details)
     console.log(props)
 
-    
+
     useEffect( () => {
 
         let url = ""
@@ -52,7 +52,7 @@ export default function Bar(props) {
         axios.post(url,{"username":props.location.state.user})
             .then((response) => {
                 console.log(response)
-                console.log("Invite Api Called")
+                console.log("Api Called")
                 setDetails(response['data'].reverse())
             })
             .catch((error) => {
@@ -60,7 +60,7 @@ export default function Bar(props) {
                 setDetails([])
             })
         
-
+       
     }, [props] )
     
 
@@ -75,7 +75,7 @@ export default function Bar(props) {
             <Grid container direction="column">
 
                 {details.map((value, key) => (
-
+                    console.log(value['board_url'],value['meet_url'],key),
                     <Grid item className={classes.card}>
                         <Grid container direction="column" spacing={3}>
 
@@ -100,7 +100,8 @@ export default function Bar(props) {
                                                 pathname: "/room", 
                                                 state: {
                                                   user: props.location.state.user,
-                                                  meet: ""
+                                                  meet: value['meet_url'],
+                                                  board: value['board_url']
                                                 }
                                               })}
                                         >

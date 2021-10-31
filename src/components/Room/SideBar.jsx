@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   
 }));
  
-export default function SideBar() {
+export default function SideBar(props) {
   
   const classes = useStyles();
 
@@ -152,7 +152,7 @@ export default function SideBar() {
             <VidConf data={VideoConference} />
             {CodeEditor  ? <Editor />    : ''}
             {Profiles     ? <Profile />   : ''}
-            {Whiteboard  ? <WhiteBoard/> : ''}
+            {Whiteboard  ? <WhiteBoard {...props} /> : ''}
         </div>
 
 

@@ -2,11 +2,11 @@ import SideBar from './SideBar';
 import React, { useEffect } from 'react';
 
 function Room(props){
-
+    console.log(props,'techmeet-'+props.location.state.meet)
     function startConference() {
         const domain = "meet.jit.si";
         const options = {
-          roomName: 'techmeet',
+          roomName: 'techmeet-'+props.location.state.meet,
           parentNode: document.getElementById('jitsi-container'),
           userInfo: {
             email: 'email@jitsiexamplemail.com',
@@ -61,7 +61,7 @@ function Room(props){
       });
       return (
           <div>
-              <SideBar />
+              <SideBar {...props} />
           </div>
       );
     }
