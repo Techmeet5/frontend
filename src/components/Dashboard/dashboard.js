@@ -18,7 +18,6 @@ import { ReactComponent as Bell } from '../../svg/bell_icon.svg'
 
 import Meeting from './meeting.js'
 import Room from './room.js'
-import Activity from './activity.js'
 import Whiteboard from './whiteboard.js'
 import Profile from './profile.js'
 
@@ -76,14 +75,13 @@ export default function Dashboard(props) {
 
   const [meetings,    set_meetings]   = React.useState(true)
   const [room,        set_room]       = React.useState(false)
-  const [activity,    set_activity]   = React.useState(false)
   const [whiteboards, set_wboard]     = React.useState(false)
   const [profile,     set_profile]    = React.useState(false)
 
 
   function showPage(page_number) {
     console.log(page_number)
-    const show = [set_meetings, set_room, set_activity, set_wboard, set_profile]
+    const show = [set_meetings, set_room, set_wboard, set_profile]
 
     for (let i = 0; i < show.length; i++) {
       if (i === page_number) {
@@ -95,7 +93,7 @@ export default function Dashboard(props) {
       }
 
     }
-    console.log(meetings, room, activity, whiteboards, profile)
+    console.log(meetings, room, whiteboards, profile)
   }
 
 
@@ -134,7 +132,7 @@ export default function Dashboard(props) {
         </div>
         <Divider />
         <List className={classes.divider}>
-          {['Meetings', 'Room', 'Activity', 'Whiteboards', 'Profile'].map((text, index) => (
+          {['Meetings', 'Room', 'Whiteboards', 'Profile'].map((text, index) => (
             <ListItem button key={text}
               className={classes.li_item}
               onClick={() => showPage(index)}
@@ -154,7 +152,6 @@ export default function Dashboard(props) {
         <div>
           {meetings    ? <Meeting {...props} />  : ''}
           {room        ? <Room    {...props} />  : ''}
-          {activity    ? <Activity />            : ''}
           {whiteboards ? <Whiteboard />          : ''}
           {profile     ? <Profile {...props} />  : ''}
 

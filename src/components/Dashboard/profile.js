@@ -115,7 +115,7 @@ export default function CenteredGrid(props) {
   
   return (
     <div className={classes.root}>
-      <Grid container spacing={3} alignItems="stretch" style={{border: '2px solid red'}} > 
+      <Grid container spacing={3} alignItems="stretch" > 
         
         <Grid item xs={0}></Grid>
         <Grid item xs={3} className={classes.grid}>

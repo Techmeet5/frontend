@@ -65,36 +65,30 @@ export default function Main() {
                 > 
           <ThemeProvider theme={theme_1}>
             <Typography variant="h2" gutterBottom>
-              Welcome to React
+              Welcome to Tech Meet
             </Typography> 
           </ThemeProvider> 
           
           <Container maxWidth="sm" className={classes.text}>
             <ThemeProvider theme={theme_1}>
-              <Typography  align="left" gutterBottom>
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.
-                Nulla vitae nulla magna.
-              Phasellus non sem ac ligula rhoncus vehicula.
-              Donec non tempus eros, et cursus leo.
-                Quisque neque turpis, facilisis ut tristique vel,
-                rutrum eget sem.
-              Aliquam erat volutpat.
-              Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              Vestibulum tristique, ipsum vitae elementum facilisis,
-              odio lorem mattis justo, at sollicitudin mi sapien eget purus.
-              Ut et rhoncus neque. Nam nec aliquet elit.
-              </Typography> 
+              <Typography  align="left" gutterBottom variant="h5">
+              Techmeet is a virtual platform for technical interview and have many features that help you in your interview.
+              </Typography>
+
+              <Typography  align="left" gutterBottom variant="h5">
+              We provide features from cut-edge technology like Video-Confrence , Collaborative Whiteboard & Code-Editor,
+              </Typography>
+
+              <Typography  align="left" gutterBottom variant="h5">
+              For brief introduction login using the above bar.
+              </Typography>
+
+
             </ThemeProvider> 
           </Container>
 
           <Container maxWidth="sm" className={classes.buttons}>
-            <Button variant="contained" color="#26BEFF" className={classes.button}>
-                CLICK ME            
-            </Button>
-            <Button style={{marginLeft:'30px'}} variant="contained" className={classes.button}>
-              CLICK ME
-            </Button>
+            
           </Container>
   
         
