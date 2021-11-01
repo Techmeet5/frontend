@@ -20,10 +20,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  grid:{
+    minHeight: '80vh'
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    height: "100%",
   },
   root2: {
     maxWidth: 343,
@@ -32,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     borderColor: 'red',
     borderRadius: 12,
     padding: 12,
+    height: "100%",
   },
   media: {
     borderRadius: 6,
@@ -67,9 +72,18 @@ export default function CenteredGrid(props) {
   console.log("Inside profile")
   console.log(details)
   console.log(props.location.state.user)
-  const url = 'https://codeeditor-backend.herokuapp.com/api/profile/'+props.location.state.user
+  const url = 'https://codeeditor-backend.herokuapp.com/api/profile/'+props.location.state.user+'/'
   
-  
+  function update_profile(){
+
+    console.log("Sending API")
+    axios.put(url,details)
+    .then( (response) => {
+        console.log(response.data)
+        console.log("API Sent")
+    })
+    .catch( (error) => {} )
+    }
 
 
 
@@ -101,10 +115,10 @@ export default function CenteredGrid(props) {
   
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} alignItems="stretch" style={{border: '2px solid red'}} > 
         
         <Grid item xs={0}></Grid>
-        <Grid item xs={3}>
+        <Grid item xs={3} className={classes.grid}>
           <Paper className={classes.paper}>
 
           <Card className={classes.root2}>
@@ -116,13 +130,14 @@ export default function CenteredGrid(props) {
                 'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80'
               }
             />
+            <Divider className={classes.divider}/>
             <CardContent>
               <TextInfoContent
                 
-                overline={'@Baaphusabka'}
-                heading={'SARGUN SINGH'}
+                overline={details['username']}
+                heading={details['first_name']}
                 body={
-                  'That year, collection of songs, review melodies, memories full, this is a long and warm journey'
+                  details['about']
                 }
               />
             </CardContent>
@@ -132,9 +147,10 @@ export default function CenteredGrid(props) {
           </Paper>
         </Grid>
 
-        <Grid item xs={8}>
+        <Grid item xs={8} className={classes.grid}>
           <Paper className={classes.paper}>
-
+            
+            <div >
             <Typography variant="h6" className={classes.heading}>
               Edit Profile
             </Typography>
@@ -230,7 +246,10 @@ export default function CenteredGrid(props) {
                   </Grid>
                   
                   <Grid item xs={4}>
-                    <Button style={{textTransform: 'none',backgroundColor: '#23ccef'}} variant="contained" color="primary">
+                    <Button style={{textTransform: 'none',backgroundColor: '#23ccef'}} 
+                            variant="contained" 
+                            color="primary"
+                            onClick={update_profile} >
                       Update Profile
                     </Button> 
                   </Grid>
@@ -243,7 +262,7 @@ export default function CenteredGrid(props) {
             
 
             </Grid>
-
+            </div>
           </Paper>
         
         </Grid>

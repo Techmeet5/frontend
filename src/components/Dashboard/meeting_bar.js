@@ -75,7 +75,7 @@ export default function Bar(props) {
             <Grid container direction="column">
 
                 {details.map((value, key) => (
-                    console.log(value['board_url'],value['meet_url'],key),
+                    
                     <Grid item className={classes.card}>
                         <Grid container direction="column" spacing={3}>
 
