@@ -234,7 +234,14 @@ export default function CenteredGrid(props) {
                   <Grid item xs={2}>
                     <Button 
                     variant="contained"
-                    onClick={() => push("/room")}>
+                    onClick={() => push( { 
+                      pathname: "/room", 
+                      state: {
+                        user: props.location.state.user,
+                        meet: generateString(10),
+                        board: generateString(10)
+                      }
+                    })}>
                       Start
                     </Button>
                   </Grid>
