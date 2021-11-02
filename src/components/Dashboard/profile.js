@@ -83,9 +83,18 @@ export default function CenteredGrid(props) {
         console.log("API Sent")
     })
     .catch( (error) => {} )
-    }
+  }
 
+  function change_profile_picture(){
 
+    console.log("Sending API")
+    axios.put(url,details)
+    .then( (response) => {
+        console.log(response.data)
+        console.log("API Sent")
+    })
+    .catch( (error) => {} )
+  }
 
   useEffect(() => {
   axios.get(url)
@@ -130,12 +139,18 @@ export default function CenteredGrid(props) {
                 'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80'
               }
             />
-            <Divider className={classes.divider}/>
             <CardContent>
+              <Button style={{textTransform: 'none',backgroundColor: '#23ccef'}} 
+                            variant="contained" 
+                            color="primary"
+                            onClick={change_profile_picture} >
+                      Change Profile Picture
+              </Button> 
+              <Divider className={classes.divider}/>
               <TextInfoContent
                 
-                overline={details['username']}
-                heading={details['first_name']}
+                overline={'@'+details['username']}
+                heading={details['first_name']+' '+details['last_name']}
                 body={
                   details['about']
                 }
@@ -167,7 +182,13 @@ export default function CenteredGrid(props) {
                 <Grid container spacing={1}>
                   
                   <Grid item xs={12}>
-                    <TextField  label="Email"  value={details.email} onChange={ (e) => setDetails( {...details,email:e.target.value}) } variant="outlined" fullWidth />
+                    <TextField  label="Email" 
+                                InputLabelProps={{ shrink: true }} 
+                                value={details.email} 
+                                onChange={ (e) => setDetails( {...details,email:e.target.value}) } 
+                                variant="outlined" 
+                                fullWidth 
+                            />
                   </Grid>
                 </Grid>
 
@@ -179,10 +200,22 @@ export default function CenteredGrid(props) {
 
                 <Grid container spacing={4} >
                   <Grid item xs={6}>
-                    <TextField size="small"  label="First Name"  value={details.first_name} onChange={ (e) => setDetails( {...details,first_name:e.target.value}) } variant="outlined" />
+                    <TextField size="small" 
+                              InputLabelProps={{ shrink: true }} 
+                              label="First Name"  
+                              value={details.first_name} 
+                              onChange={ (e) => setDetails( {...details,first_name:e.target.value}) } 
+                              variant="outlined" 
+                            />
                   </Grid>
                   <Grid item xs={6} >
-                    <TextField size="small"  label="Last Name"    value={details.last_name} onChange={ (e) => setDetails( {...details,last_name:e.target.value}) } variant="outlined"  />
+                    <TextField size="small"
+                              InputLabelProps={{ shrink: true }}   
+                              label="Last Name"    
+                              value={details.last_name} 
+                              onChange={ (e) => setDetails( {...details,last_name:e.target.value}) } 
+                              variant="outlined"  
+                            />
                   </Grid>
                 </Grid>
                 
@@ -192,7 +225,15 @@ export default function CenteredGrid(props) {
 
                 <Grid container spacing={4} >
                   <Grid item xs={12}>
-                    <TextField size="small"  label="College Name" placeholder="College Name"  value={details.college} onChange={ (e) => setDetails( {...details,college:e.target.value}) } variant="outlined" fullWidth/>
+                    <TextField size="small"  
+                              InputLabelProps={{ shrink: true }}   
+                              label="College Name" 
+                              placeholder="College Name"  
+                              value={details.college} 
+                              onChange={ (e) => setDetails( {...details,college:e.target.value}) } 
+                              variant="outlined" 
+                              fullWidth
+                            />
                   </Grid>
                 </Grid>
                 
@@ -202,13 +243,30 @@ export default function CenteredGrid(props) {
 
                 <Grid container spacing={4} >
                   <Grid item xs={4}>
-                    <TextField size="small"  label="Year of Graduation"  value={details.year} onChange={ (e) => setDetails( {...details,year:e.target.value}) } variant="outlined" />
+                    <TextField size="small"  
+                              label="Year of Graduation"
+                              InputLabelProps={{ shrink: true }}     
+                              value={details.year} 
+                              onChange={ (e) => setDetails( {...details,year:e.target.value}) } 
+                              variant="outlined" />
                   </Grid>
                   <Grid item xs={4} >
-                    <TextField size="small"  label="Degree"  value={details.degree} onChange={ (e) => setDetails( {...details,degree:e.target.value}) } variant="outlined"  />
+                    <TextField size="small"  
+                              InputLabelProps={{ shrink: true }}   
+                              label="Degree"  
+                              value={details.degree} 
+                              onChange={ (e) => setDetails( {...details,degree:e.target.value}) } 
+                              variant="outlined"
+                              />
                   </Grid>
                   <Grid item xs={4}>
-                    <TextField size="small"  label="Country"  value={details.country} onChange={ (e) => setDetails( {...details,country:e.target.value}) } variant="outlined" />
+                    <TextField size="small"  
+                              InputLabelProps={{ shrink: true }}   
+                              label="Country"  
+                              value={details.country} 
+                              onChange={ (e) => setDetails( {...details,country:e.target.value}) } 
+                              variant="outlined"
+                             />
                   </Grid>
                 </Grid>
                 
@@ -229,7 +287,7 @@ export default function CenteredGrid(props) {
                   </Grid>
 
                   <Grid item xs={12}>
-                  <TextareaAutosize style={{width:'100%' }} aria-label="About" minRows={5} placeholder="I am a Coder !!" value={details.about} onChange={ (e) => setDetails( {...details,about:e.target.value}) } multiline/>
+                  <TextareaAutosize style={{width:'100%', minHeight:'20px', padding: '15px' }} aria-label="About" minRows={5} placeholder="I am a Coder !!" value={details.about} onChange={ (e) => setDetails( {...details,about:e.target.value}) } multiline/>
                   </Grid>
                 </Grid>
                 
