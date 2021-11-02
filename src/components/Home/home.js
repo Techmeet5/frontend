@@ -7,7 +7,6 @@ import "typeface-pacifico";
 import { createMuiTheme } from '@material-ui/core/styles'; 
 import { ThemeProvider, Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 
 
 const theme_1 = createMuiTheme({

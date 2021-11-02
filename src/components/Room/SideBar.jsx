@@ -10,6 +10,8 @@ import Divider        from '@material-ui/core/Divider';
 import ListItem       from '@material-ui/core/ListItem';
 import ListItemIcon   from '@material-ui/core/ListItemIcon';
 import ListItemText   from '@material-ui/core/ListItemText';
+import Button         from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 
 import VidConf        from './VidConf';
 import Editor         from './Editor';
@@ -74,20 +76,21 @@ const useStyles = makeStyles((theme) => ({
 }));
  
 export default function SideBar(props) {
-  
+  const { push } = useHistory();
+
   const classes = useStyles();
 
   const [VideoConference    , set_VideoConference] = React.useState(true)
   const [CodeEditor         , set_CodeEditor     ] = React.useState(false)
   const [Profiles           , set_Profiles       ] = React.useState(false)
   const [Whiteboard         , set_whiteboards    ] = React.useState(false)
-  const [Title              , set_Title          ] = React.useState("VideoConference")
+  const [Title              , set_Title          ] = React.useState("Video Conference")
 
 
   function showPage(page_number){
     console.log(page_number)
     const show = [set_VideoConference,set_CodeEditor,set_whiteboards,set_Profiles]
-    const titles=["VideoConference","CodeEditor","Whiteboard","Profiles"]
+    const titles=["Video Conference","Code Editor","Whiteboard","Profiles"]
     for (let i = 0; i < show.length; i++) {
       if(i===page_number){
         show[i](true)
@@ -124,7 +127,18 @@ export default function SideBar(props) {
         
         <div className={classes.logo} >
         <Typography variant="h6" >
-              TechMeet
+            <Button 
+                style={{color: 'white', fontSize: '20px', padding: '0px 30px'}}
+                onClick={() => push({ 
+                pathname: "/homepage", 
+                state:  {
+                  user: props.location.state.user,
+                  name: props.location.state.name,
+                  email: props.location.state.email
+                }
+              })}>
+              Techmeet
+            </Button>
           </Typography>
           
         </div>
