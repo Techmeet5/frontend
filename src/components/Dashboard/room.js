@@ -103,7 +103,15 @@ export default function CenteredGrid(props) {
           console.log(response)
           console.log("Api Sent")
           // To reload after scheduling
-          push('/homepage')
+          //push('/homepage')
+          push( { 
+            pathname: "/homepage", 
+            state:  {
+              user: props.location.state.user,
+              name: props.location.state.name,
+              email: props.location.state.email
+            }
+          })
           
         })
         .catch((error) => {

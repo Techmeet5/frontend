@@ -12,15 +12,21 @@ import Button         from '@material-ui/core/Button';
 const useStyles = makeStyles({
   container:{
     marginTop: '10vh',
+    //border: '5px solid green',
   },
   table: {
     minWidth: 650,
+    border: '5px solid black'
   },
   head:{
-      backgroundColor: '#aecff7'
+      backgroundColor: '#aecff7',
+      //border: '5px solid red'
+  },
+  row:{
+    border: '5px solid black'
   },
   text:{
-    fontSize: '18px'
+    fontSize: '18px',
   },
   button_text:{
     color: "black"
@@ -43,7 +49,7 @@ export default function UserTable2(props) {
         <TableHead className={classes.head}>
 
           {props.data.map((key,value) => (
-            <TableRow key={value}>
+            <TableRow key={value} className={classes.row}>
 
               <TableCell className={classes.text}> @{key['username']} </TableCell>
               <TableCell className={classes.text}> {key['name']} </TableCell>
