@@ -12,9 +12,11 @@ import ListItemIcon   from '@material-ui/core/ListItemIcon';
 import ListItemText   from '@material-ui/core/ListItemText';
 import InboxIcon      from '@material-ui/icons/MoveToInbox';
 import MailIcon       from '@material-ui/icons/Mail';
+import Button         from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 
 import './svg.css'
-import { ReactComponent as Bell } from '../../svg/bell_icon.svg'
+//import { ReactComponent as Bell } from '../../svg/bell_icon.svg'
 
 import Meeting from './meeting.js'
 import Room from './room.js'
@@ -71,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Dashboard(props) {
+  const { push } = useHistory();
   const classes = useStyles();
 
   const [meetings,    set_meetings]   = React.useState(true)
@@ -103,14 +106,6 @@ export default function Dashboard(props) {
 
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            Permanent drawer
-          </Typography>
-
-          {/* CSS for svg in css file */}
-          <Bell className="close" />
-
-
         </Toolbar>
       </AppBar>
 
@@ -126,7 +121,18 @@ export default function Dashboard(props) {
 
         <div className={classes.logo} >
           <Typography variant="h6" >
-            TechMeet
+            <Button 
+                style={{color: 'white', fontSize: '20px', padding: '0px 30px'}}
+                onClick={() => push({ 
+                pathname: "/homepage", 
+                state:  {
+                  user: props.location.state.user,
+                  name: props.location.state.name,
+                  email: props.location.state.email
+                }
+              })}>
+              Techmeet
+            </Button>
           </Typography>
 
         </div>
